@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipojo xmlns="org.apache.felix.ipojo">
+  <component classname="org.example.time.MomentOfTheDayImpl" name="MomentOfTheDay">
+    <provides specifications="org.example.time.MomentOfTheDayService"/>
+    <callback method="start" transition="validate"/>
+    <callback method="stop" transition="invalidate"/>
+    <provides specifications="fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable"/>
+  </component>
+  <instance component="MomentOfTheDay" name="moment.of.the.day"/>
+</ipojo>

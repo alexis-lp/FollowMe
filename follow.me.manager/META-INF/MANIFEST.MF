@@ -1,0 +1,95 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Follow Me Manager
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: follow.me.manager
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Export-Package: org.example.follow.me.manager
+Import-Package: fr.liglab.adele.icasa, fr.liglab.adele.icasa.access, f
+ r.liglab.adele.icasa.access.command, fr.liglab.adele.icasa.applicatio
+ n, fr.liglab.adele.icasa.application.impl, fr.liglab.adele.icasa.appl
+ ication.impl.command, fr.liglab.adele.icasa.application.remote, fr.li
+ glab.adele.icasa.application.remote.util, fr.liglab.adele.icasa.clock
+ service, fr.liglab.adele.icasa.clockservice.impl, fr.liglab.adele.ica
+ sa.clockservice.util, fr.liglab.adele.icasa.command, fr.liglab.adele.
+ icasa.command.handler, fr.liglab.adele.icasa.commands, fr.liglab.adel
+ e.icasa.commands.impl, fr.liglab.adele.icasa.common, fr.liglab.adele.
+ icasa.common.impl, fr.liglab.adele.icasa.common.xml.utils, fr.liglab.
+ adele.icasa.dependency.manager.exception, fr.liglab.adele.icasa.devic
+ e, fr.liglab.adele.icasa.device.bathroomscale, fr.liglab.adele.icasa.
+ device.box, fr.liglab.adele.icasa.device.button, fr.liglab.adele.icas
+ a.device.button.simulated, fr.liglab.adele.icasa.device.doorWindow, f
+ r.liglab.adele.icasa.device.gasSensor, fr.liglab.adele.icasa.device.l
+ ight, fr.liglab.adele.icasa.device.manager, fr.liglab.adele.icasa.dev
+ ice.motion, fr.liglab.adele.icasa.device.power, fr.liglab.adele.icasa
+ .device.presence, fr.liglab.adele.icasa.device.security, fr.liglab.ad
+ ele.icasa.device.settopbox, fr.liglab.adele.icasa.device.sound, fr.li
+ glab.adele.icasa.device.sprinkler, fr.liglab.adele.icasa.device.tempe
+ rature, fr.liglab.adele.icasa.device.util, fr.liglab.adele.icasa.exce
+ ption, fr.liglab.adele.icasa.frontend.services, fr.liglab.adele.icasa
+ .frontend.services.rest, fr.liglab.adele.icasa.frontend.services.util
+ s, fr.liglab.adele.icasa.listener, fr.liglab.adele.icasa.location, fr
+ .liglab.adele.icasa.location.impl, fr.liglab.adele.icasa.location.uti
+ l, fr.liglab.adele.icasa.remote.wisdom, fr.liglab.adele.icasa.remote.
+ wisdom.util, fr.liglab.adele.icasa.service.location, fr.liglab.adele.
+ icasa.service.preferences, fr.liglab.adele.icasa.service.scheduler, f
+ r.liglab.adele.icasa.service.zone.dimension.calculator, fr.liglab.ade
+ le.icasa.service.zone.size.calculator, fr.liglab.adele.icasa.simulato
+ r, fr.liglab.adele.icasa.simulator.listener, fr.liglab.adele.icasa.si
+ mulator.listener.util, fr.liglab.adele.icasa.simulator.remote.wisdom.
+ util, fr.liglab.adele.icasa.simulator.script.executor, fr.liglab.adel
+ e.icasa.simulator.services, org.apache.felix.ipojo;version="[1.12.1,2
+ .0.0)", org.apache.felix.ipojo.architecture;version="[1.12.1,2.0.0)",
+  org.example.follow.me.configuration, org.example.time, org.json, org
+ .osgi.service.cm;version=1.2, org.osgi.service.log;version=1.3
+iPOJO-Components: instance { $component="FollowMeManager" $name="Follo
+ wMeManagerImpl" }component { $classname="org.example.follow.me.manage
+ r.impl.FollowMeManagerImpl" $name="FollowMeManager" requires { $optio
+ nal="true" $specification="org.example.follow.me.configuration.Follow
+ MeConfiguration" $field="followMeConfigurationService" }requires { $o
+ ptional="true" $specification="fr.liglab.adele.icasa.service.preferen
+ ces.Preferences" $field="preferencesService" }requires { $optional="t
+ rue" $specification="fr.liglab.adele.icasa.service.location.PersonLoc
+ ationService" $field="personLocationService" }requires { $aggregate="
+ true" $optional="true" $specification="org.example.time.MomentOfTheDa
+ yService" $field="momentsOfTheDay" callback { $method="bindMomentOfTh
+ eDay" $type="bind" }callback { $method="unbindMomentOfTheDay" $type="
+ unbind" }}callback { $method="start" $transition="validate" }callback
+  { $method="stop" $transition="invalidate" }provides { $specification
+ s="org.example.follow.me.manager.FollowMeAdministration" }manipulatio
+ n { $classname="org.example.follow.me.manager.impl.FollowMeManagerImp
+ l" interface { $name="org.example.follow.me.manager.FollowMeAdministr
+ ation" }interface { $name="org.example.time.MomentOfTheDayListener" }
+ field { $name="followMeConfigurationService" $type="org.example.follo
+ w.me.configuration.FollowMeConfiguration" }field { $name="momentsOfTh
+ eDay" $type="org.example.time.MomentOfTheDayService[]" }field { $name
+ ="personLocationService" $type="fr.liglab.adele.icasa.service.locatio
+ n.PersonLocationService" }field { $name="persons" $type="java.util.Se
+ t" }field { $name="preferencesService" $type="fr.liglab.adele.icasa.s
+ ervice.preferences.Preferences" }method { $name="getIlluminancePrefer
+ enceForUser" $return="org.example.follow.me.manager.IlluminanceGoal" 
+ $arguments="{java.lang.String}" $names="{Name}" }method { $name="setI
+ lluminancePreferenceForUser" $arguments="{java.lang.String,org.exampl
+ e.follow.me.manager.IlluminanceGoal}" $names="{userName,goal}" }metho
+ d { $name="computeNewIlluminance" $return="int" }method { $name="getP
+ ersonInLocation" $return="java.util.Set" $arguments="{java.lang.Strin
+ g}" $names="{location}" }method { $name="setIlluminancePreference" $a
+ rguments="{org.example.follow.me.manager.IlluminanceGoal}" $names="{i
+ lluminanceGoal}" }method { $name="getIlluminancePreference" $return="
+ org.example.follow.me.manager.IlluminanceGoal" }method { $name="setEn
+ ergySavingGoal" $arguments="{org.example.follow.me.manager.EnergyGoal
+ }" $names="{energyGoal}" }method { $name="getEnergyGoal" $return="org
+ .example.follow.me.manager.EnergyGoal" }method { $name="stop" }method
+  { $name="start" }method { $name="illuminanceToString" $return="java.
+ lang.String" $arguments="{org.example.follow.me.manager.IlluminanceGo
+ al}" $names="{goal}" }method { $name="stringToIlluminance" $return="o
+ rg.example.follow.me.manager.IlluminanceGoal" $arguments="{java.lang.
+ String}" $names="{goal}" }method { $name="bindMomentOfTheDay" $argume
+ nts="{org.example.time.MomentOfTheDayService,java.util.Map}" $names="
+ {momentOfTheDayService,properties}" }method { $name="unbindMomentOfTh
+ eDay" $arguments="{org.example.time.MomentOfTheDayService,java.util.M
+ ap}" $names="{momentOfTheDayService,properties}" }method { $name="mom
+ entOfTheDayHasChanged" $arguments="{org.example.time.MomentOfTheDay}"
+  $names="{newMomentOfTheDay}" }}}
+

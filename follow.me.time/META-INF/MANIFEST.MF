@@ -1,0 +1,66 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Time
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: follow.me.time
+Bundle-Vendor: Time
+Bundle-Version: 1.0.0.qualifier
+Created-By: iPOJO 1.12.1
+Export-Package: org.example.time
+Import-Package: fr.liglab.adele.icasa, fr.liglab.adele.icasa.access, f
+ r.liglab.adele.icasa.access.command, fr.liglab.adele.icasa.applicatio
+ n, fr.liglab.adele.icasa.application.impl, fr.liglab.adele.icasa.appl
+ ication.impl.command, fr.liglab.adele.icasa.application.remote, fr.li
+ glab.adele.icasa.application.remote.util, fr.liglab.adele.icasa.clock
+ service, fr.liglab.adele.icasa.clockservice.impl, fr.liglab.adele.ica
+ sa.clockservice.util, fr.liglab.adele.icasa.command, fr.liglab.adele.
+ icasa.command.handler, fr.liglab.adele.icasa.commands, fr.liglab.adel
+ e.icasa.commands.impl, fr.liglab.adele.icasa.common, fr.liglab.adele.
+ icasa.common.impl, fr.liglab.adele.icasa.common.xml.utils, fr.liglab.
+ adele.icasa.dependency.manager.exception, fr.liglab.adele.icasa.devic
+ e, fr.liglab.adele.icasa.device.bathroomscale, fr.liglab.adele.icasa.
+ device.box, fr.liglab.adele.icasa.device.button, fr.liglab.adele.icas
+ a.device.button.simulated, fr.liglab.adele.icasa.device.doorWindow, f
+ r.liglab.adele.icasa.device.gasSensor, fr.liglab.adele.icasa.device.l
+ ight, fr.liglab.adele.icasa.device.manager, fr.liglab.adele.icasa.dev
+ ice.motion, fr.liglab.adele.icasa.device.power, fr.liglab.adele.icasa
+ .device.presence, fr.liglab.adele.icasa.device.security, fr.liglab.ad
+ ele.icasa.device.settopbox, fr.liglab.adele.icasa.device.sound, fr.li
+ glab.adele.icasa.device.sprinkler, fr.liglab.adele.icasa.device.tempe
+ rature, fr.liglab.adele.icasa.device.util, fr.liglab.adele.icasa.exce
+ ption, fr.liglab.adele.icasa.frontend.services, fr.liglab.adele.icasa
+ .frontend.services.rest, fr.liglab.adele.icasa.frontend.services.util
+ s, fr.liglab.adele.icasa.listener, fr.liglab.adele.icasa.location, fr
+ .liglab.adele.icasa.location.impl, fr.liglab.adele.icasa.location.uti
+ l, fr.liglab.adele.icasa.remote.wisdom, fr.liglab.adele.icasa.remote.
+ wisdom.util, fr.liglab.adele.icasa.service.location, fr.liglab.adele.
+ icasa.service.preferences, fr.liglab.adele.icasa.service.scheduler, f
+ r.liglab.adele.icasa.service.zone.dimension.calculator, fr.liglab.ade
+ le.icasa.service.zone.size.calculator, fr.liglab.adele.icasa.simulato
+ r, fr.liglab.adele.icasa.simulator.listener, fr.liglab.adele.icasa.si
+ mulator.listener.util, fr.liglab.adele.icasa.simulator.remote.wisdom.
+ util, fr.liglab.adele.icasa.simulator.script.executor, fr.liglab.adel
+ e.icasa.simulator.services, org.apache.felix.ipojo;version="[1.12.1,2
+ .0.0)", org.apache.felix.ipojo.architecture;version="[1.12.1,2.0.0)",
+  org.json, org.osgi.service.cm;version=1.2, org.osgi.service.log;vers
+ ion=1.3
+iPOJO-Components: instance { $component="MomentOfTheDay" $name="moment
+ .of.the.day" }component { $classname="org.example.time.MomentOfTheDay
+ Impl" $name="MomentOfTheDay" provides { $specifications="org.example.
+ time.MomentOfTheDayService" }provides { $specifications="fr.liglab.ad
+ ele.icasa.service.scheduler.PeriodicRunnable" }callback { $method="st
+ art" $transition="validate" }callback { $method="stop" $transition="i
+ nvalidate" }manipulation { $classname="org.example.time.MomentOfTheDa
+ yImpl" interface { $name="org.example.time.MomentOfTheDayService" }in
+ terface { $name="fr.liglab.adele.icasa.service.scheduler.PeriodicRunn
+ able" }field { $name="currentMomentOfTheDay" $type="org.example.time.
+ MomentOfTheDay" }field { $name="currentTime" $type="int" }field { $na
+ me="momentListeners" $type="java.util.ArrayList" }method { $name="get
+ MomentOfTheDay" $return="org.example.time.MomentOfTheDay" }method { $
+ name="getPeriod" $return="long" }method { $name="getUnit" $return="ja
+ va.util.concurrent.TimeUnit" }method { $name="run" }method { $name="s
+ tart" }method { $name="stop" }method { $name="register" $arguments="{
+ org.example.time.MomentOfTheDayListener}" $names="{listener}" }method
+  { $name="unregister" $arguments="{org.example.time.MomentOfTheDayLis
+ tener}" $names="{listener}" }}}
+
